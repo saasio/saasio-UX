@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Wave\Traits\HasProfileKeyValues;
 use Devdojo\Auth\Models\User as AuthUser;
 
-class User extends WaveUser
+class User extends AuthUser
 {
     use Notifiable, HasProfileKeyValues;
 
