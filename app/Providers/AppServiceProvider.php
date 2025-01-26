@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,13 +23,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    (
     public function boot()
-    Gate::define('viewAuthSetup', function (\DevDojo\Auth\Models\User $user) {
-    return in_array($user->email, [
-        '[email protected]',
-    ]);
-});
     {
         if ($this->app->environment() == 'production') {
             $this->app['request']->server->set('HTTPS', true);
