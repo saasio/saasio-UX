@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
+    Gate::define('viewAuthSetup', function (\DevDojo\Auth\Models\User $user) {
+    return in_array($user->email, [
+        '[email protected]',
+    ]);
+});
     {
         if ($this->app->environment() == 'production') {
             $this->app['request']->server->set('HTTPS', true);
@@ -68,9 +73,4 @@ class AppServiceProvider extends ServiceProvider
         }
         catch (\Exception $exception){}
     }
-    Gate::define('viewAuthSetup', function (\DevDojo\Auth\Models\User $user) {
-    return in_array($user->email, [
-        '[email protected]',
-    ]);
-});
 }
