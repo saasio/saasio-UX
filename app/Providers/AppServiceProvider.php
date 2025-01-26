@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    (
     public function boot()
     Gate::define('viewAuthSetup', function (\DevDojo\Auth\Models\User $user) {
     return in_array($user->email, [
