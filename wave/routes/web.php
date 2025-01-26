@@ -15,7 +15,7 @@ Route::get('logout', '\Wave\Http\Controllers\LogoutController@logout')->name('wa
 Route::view('install', 'wave::install')->name('wave.install');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::redirect('settings', 'auth/setup')->name('settings');
+    Route::redirect('settings', 'settings/profile')->name('settings');
 
     if(config("wave.billing_provider") == 'paddle'){
         Route::get('settings/invoices/{invoice}', '\Wave\Http\Controllers\SubscriptionController@invoice')->name('wave.paddle.invoice');
